@@ -1,6 +1,8 @@
 import torch
 from llms.configuration import Config
 
+import torch
+
 class OKVQADataLoader:
     def __init__(self, dataset, config=Config):
         """
@@ -13,8 +15,9 @@ class OKVQADataLoader:
         self.dataset = dataset
         self.batch_size = config.BATCH_SIZE
         self.device = config.DEVICE
-        self.prompt_template = config.PROMPT_TEMPLATE  # General prompt template from Config
+        self.prompt_template = config.PROMPT_TEMPLATE  
         self.captions_keys = config.CAPTIONS
+        
 
     def create_prompt(self, question, captions):
         """
@@ -29,10 +32,11 @@ class OKVQADataLoader:
         """
         # Filter and format captions based on the specified keys in Config
         selected_captions = []
-        for key in self.captions_keys:
-            if key in captions:
-                selected_captions.extend(captions[key])
-
+        if self.captions_keys:
+          for key in self.captions_keys:
+              if key in captions:
+                  selected_captions.extend(captions[key])
+        
         formatted_captions = "\n".join(selected_captions)
         return self.prompt_template.format(question=question, captions=formatted_captions)
 
