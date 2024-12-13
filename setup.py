@@ -15,9 +15,9 @@ setup(
     install_requires=[
         "transformers==4.46.3",
         "torch==2.5.1+cu121",
-        "datasets==2.14.4",
-        "fsspec==2024.10.0",
+        "datasets==3.2.0",
         "numpy==1.26.4",
+        
         ],
 
     classifiers=[
