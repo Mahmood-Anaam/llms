@@ -17,6 +17,7 @@ setup(
         "torch==2.5.1+cu121",
         "datasets==3.2.0",
         "numpy==1.26.4",
+        "google-generativeai>=0.7.2"
         
         ],
 

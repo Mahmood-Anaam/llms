@@ -1,5 +1,6 @@
 import torch
 from llms.configuration.prompts import PROMPTS
+from google.colab import userdata
 
 class Config:
 
@@ -12,6 +13,17 @@ class Config:
   BATCH_SIZE = 5
   CAPTIONS = ["bit","violet"]
   PROMPT_TEMPLATE = PROMPTS["default"]
+  SYSTEM_INSTRUCTION = None
 
-  MODEL_PATH = "Gemini 1.5 Flash"
+  API_KEY = userdata.get('GEMINI_API_KEY')
+  MODEL_NAME = "models/gemini-1.5-flash"
+  GENERATION_CONFIG = {  
+        "temperature": 1.0,  
+        "top_p": 0.95,
+        "top_k": 40,
+        "max_output_tokens": 20,  
+        "response_mime_type": "text/plain",  
+    }
+
+
   
